@@ -5,7 +5,6 @@ public abstract class Personagem {
     private int vidaMax;
     private Classe classe;
     private int ataque;
-    private int energia;
 
     public abstract void atacar(Personagem alvo);
 
@@ -21,16 +20,12 @@ public abstract class Personagem {
         return ataque;
     }
 
-    public int getEnergia() {
-        return energia;
-    }
-
     public Classe getClasse() {
         return classe;
     }
 
     public void receberDano(int dano){
-        this.vida += dano;
+        this.vida -= dano;
         if(this.vida > vidaMax) this.vida = 0;
     }
 
@@ -47,6 +42,6 @@ public abstract class Personagem {
         this.vida = vida;
         this.classe = classe;
         this.ataque = ataque;
-        this.energia = energia;
     }
+
 }

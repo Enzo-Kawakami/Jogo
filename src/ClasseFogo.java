@@ -7,7 +7,7 @@ public class ClasseFogo extends Personagem {
     @Override
     public void atacar(Personagem alvo) {
         int dano = this.getAtaque();
-        IO.println(getNome() + "Usou Brasa em "+alvo.getNome());
+        IO.println(getNome() + " Usou Brasa em "+alvo.getNome());
 
         if (alvo.getClasse() == Classe.Gelo){
             dano *= 2;

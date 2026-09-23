@@ -2,14 +2,17 @@ void main(){
     Scanner sc = new Scanner(System.in);
 
     IO.println("Bem-Vindo ao Mundo de Albion Online");
-    IO.println("Digite seu Nome de Aventureiro");
+    IO.println("Digite seu Nome de Aventureiro:");
     String nomeJogador = sc.nextLine();
 
     IO.println("\n"+"Belo Nome!!");
     IO.println("Agora escolha uma classe: ");
+    IO.println("(1)Fogo");
+    IO.println("(2)Agua");
     int escolha = sc.nextInt();
 
     Personagem jogador;
+    Personagem inimigo;
     if(escolha == 1){
        jogador = new ClasseFogo (nomeJogador,100,Classe.Fogo,10,100);
     }else{
@@ -17,24 +20,33 @@ void main(){
     }
 
     IO.println("Mago de Gelo Apareceu!!");
-    ClasseGelo classeGelo = new ClasseGelo("Mago de Gelo",100,Classe.Agua,10,100);
+    inimigo = new ClasseGelo("Mago de Gelo",100,Classe.Agua,10,100);
 
-    IO.println("\n"+jogador.getNome()+" |Vida: "+jogador.getVida());
-    IO.println(classeGelo);
-    IO.println("Escolha sua Ação:");
-    IO.println("Atacar-(1) | Fugir-(2)");
-    int acao = sc.nextInt();
 
-    if(acao == 1){
-        jogador.atacar(classeGelo);
-        if(classeGelo.StatusVivo()){
-            IO.println("");
-            classeGelo.atacar(jogador);
+    while (jogador.StatusVivo() && inimigo.StatusVivo()) {
+        IO.println("--- SEU TURNO ---");
+        IO.println("1 - Atacar");
+        IO.println("2 - Fugir");
+
+        int acao = sc.nextInt();
+
+        if (acao == 1) {
+
+            jogador.atacar(inimigo);
+
+            if (inimigo.StatusVivo()) {
+                IO.println("\n--- TURNO DO INIMIGO ---");
+                inimigo.atacar(jogador);
+            }
+        } else if (acao == 2) {
+            IO.println("Não Fugiras dessa Luta!");
+        } else {
+            IO.println("Ação inválida! Você perdeu o turno.");
         }
-    }else {
-        IO.println("Não Fugiras dessa Luta");
     }
-    if (classeGelo.getVida() < 0){
+
+
+    if (inimigo.getVida() < 0){
         IO.println("Voce Venceu!!");
     }else if(jogador.getVida() < 0){
         IO.println("Voce Perdeu");
