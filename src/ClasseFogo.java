@@ -30,7 +30,7 @@ public class ClasseFogo extends Personagem {
         int dano = this.getAtaque();
         IO.println(getNome() + " Usou Lança Chamas em "+alvo.getNome());
         dano *= 14;
-        gastarEnergia(12)
+        gastarEnergia(12);
 
         if (alvo.getClasse() == Classe.Planta){
             dano *= 2;
