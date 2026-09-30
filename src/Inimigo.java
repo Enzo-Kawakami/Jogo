@@ -9,21 +9,11 @@ public class Inimigo extends Personagem{
     }
 
     @Override
-    public void atacar1(Personagem alvo) {
+    public void atacar(Personagem alvo) {
         IO.println(this.getNome() + " atacou " + alvo.getNome() + "!");
 
         int dano = this.getAtaque();
         alvo.receberDano(dano);
-    }
-
-    @Override
-    public void atacar2(Personagem alvo) {
-
-    }
-
-    @Override
-    public void atacar3(Personagem alvo) {
-
     }
 
 }

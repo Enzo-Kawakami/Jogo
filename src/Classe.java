@@ -1,6 +1,8 @@
 public enum Classe {
     Agua,
     Fogo,
-    Planta,
+    Eletrico,
+    Gelo,
+    Terra,
     Mana
 }

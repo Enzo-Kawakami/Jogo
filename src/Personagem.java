@@ -7,10 +7,10 @@ public abstract class Personagem {
     private int ataque;
     private int energia;
     private int energiaMax;
+    private boolean bloqueando;
 
-    public abstract void atacar1(Personagem alvo);
-    public abstract void atacar2(Personagem alvo);
-    public abstract void atacar3(Personagem alvo);
+
+    public abstract void atacar(Personagem alvo);
 
     public int getEnergia() {
         return energia;
@@ -53,19 +53,37 @@ public abstract class Personagem {
         return classe;
     }
 
-    public void receberDano(int dano){
-        this.vida -= dano;
-        if(this.vida < 0){
-            this.vida = 0;
+    public void ativarBloqueio() {
+        gastarEnergia(5);
+        if (getEnergia() <= 0){
+            IO.println("Energia Insuficiente!!");
+        }else {
+            this.bloqueando = true;
+        }
     }
-    }
+    public void receberDano(int dano) {
 
+        if (this.bloqueando) {
+            int danoReduzido = dano;
+            this.vida -= danoReduzido;
+            this.bloqueando = false;
+        } else {
+            this.vida -= dano;
+            if (this.vida < 0) {
+                this.vida = 0;
+            }
+        }
+    }
     public void curar(int cura){
-        this.vida += cura;
+        gastarEnergia(15);
+        if (getEnergia() <= 0){
+            IO.println("Energia Insuficiente!!");
+        }else {
+            this.vida += cura;
         if(this.vida > vidaMax){
             this.vida = vidaMax;
     }
-    }
+    }}
     public boolean StatusVivo(){
         return this.vida > 0;
     }
