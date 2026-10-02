@@ -7,23 +7,24 @@ public class ClasseAgua extends Personagem {
     @Override
     public void atacar(Personagem alvo) {
         int dano = this.getAtaque();
-        IO.println(getNome() + " Usou Jato de Agua em "+alvo.getNome());
+        IO.println(getNome() + " Usou Agua Perfurante em "+alvo.getNome());
         dano *= 10;
         gastarEnergia(5);
         if (getEnergia() <= 0){
             IO.println("Energia insuficiente!!");
         }else{
 
-        if (alvo.getClasse() == Classe.Fogo){
-            dano *= 2;
-            IO.println("Super Efetivo");
-        } else if (alvo.getClasse() == Classe.Gelo){
-            dano /= 2;
-            IO.println("Nada Efetivo");
-        }else {
-            IO.println("");
+            if (alvo.getClasse() == Classe.Fogo){
+                dano *= 2;
+                IO.println("Super Efetivo");
+            } else if (alvo.getClasse() == Classe.Gelo){
+                dano /= 2;
+                IO.println("Nada Efetivo");
+            }else {
+                IO.println("");
+            }
+            alvo.receberDano(dano);
         }
-        alvo.receberDano(dano);
-    }
 
-}}
+
+    }}

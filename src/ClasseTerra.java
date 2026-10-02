@@ -1,4 +1,5 @@
-public class ClasseTerra extends Personagem{
+public class ClasseTerra extends Personagem {
+
     public ClasseTerra(String nome, int vida, int vidaMax, Classe classe, int ataque, int energia, int energiaMax) {
         super(nome, vida, vidaMax, classe, ataque, energia, energiaMax);
     }
@@ -9,12 +10,19 @@ public class ClasseTerra extends Personagem{
         IO.println(getNome() + " Usou Pedra Pedrosa em " + alvo.getNome());
         dano *= 20;
         gastarEnergia(15);
+        if (getEnergia() <= 0){
+            IO.println("Energia insuficiente!!");
+        }else{
 
-        if (alvo.getClasse() == Classe.Eletrico) {
-            dano *= 2;
-            IO.println("Super Efetivo");
-        } else {
-            IO.println("");
+            if (alvo.getClasse() == Classe.Eletrico) {
+                dano *= 2;
+                IO.println("Super Efetivo");
+            } else {
+                IO.println("");
+            }
+            alvo.receberDano(dano);
         }
-        alvo.receberDano(dano);
-    }}
+    }
+}
+
+

@@ -4,5 +4,9 @@ public enum Classe {
     Eletrico,
     Gelo,
     Terra,
-    Mana
+    Mana,
+    Gosma,
+    Vampiro,
+    Caos,
 }
+

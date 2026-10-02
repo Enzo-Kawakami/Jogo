@@ -1,5 +1,6 @@
 public abstract class Personagem {
 
+
     private String nome;
     private int vida;
     private int vidaMax;
@@ -10,15 +11,20 @@ public abstract class Personagem {
     private boolean bloqueando;
 
 
+
+
     public abstract void atacar(Personagem alvo);
+
 
     public int getEnergia() {
         return energia;
     }
 
+
     public int getEnergiaMax() {
         return energiaMax;
     }
+
 
     public int getVidaMax() {
         return vidaMax;
@@ -37,34 +43,37 @@ public abstract class Personagem {
         }
     }
 
+
     public String getNome() {
         return nome;
     }
+
 
     public int getVida() {
         return vida;
     }
 
+
     public int getAtaque() {
         return ataque;
     }
+
 
     public Classe getClasse() {
         return classe;
     }
 
+
     public void ativarBloqueio() {
-        gastarEnergia(5);
-        if (getEnergia() <= 0){
-            IO.println("Energia Insuficiente!!");
-        }else {
-            this.bloqueando = true;
-        }
+        this.bloqueando = true;
     }
+
+
     public void receberDano(int dano) {
 
+
         if (this.bloqueando) {
-            int danoReduzido = dano;
+            int danoReduzido = dano*0;
             this.vida -= danoReduzido;
             this.bloqueando = false;
         } else {
@@ -80,13 +89,14 @@ public abstract class Personagem {
             IO.println("Energia Insuficiente!!");
         }else {
             this.vida += cura;
-        if(this.vida > vidaMax){
-            this.vida = vidaMax;
-    }
-    }}
+            if(this.vida > vidaMax){
+                this.vida = vidaMax;
+            }
+        }}
     public boolean StatusVivo(){
         return this.vida > 0;
     }
+
 
     public Personagem(String nome, int vida, int vidaMax, Classe classe, int ataque, int energia, int energiaMax) {
         this.nome = nome;
@@ -98,6 +108,7 @@ public abstract class Personagem {
         this.energiaMax = energiaMax;
     }
 
+
     @Override
     public String toString() {
         return "Personagem{" +
@@ -108,3 +119,4 @@ public abstract class Personagem {
                 '}';
     }
 }
+
