@@ -1,11 +1,9 @@
 void main() {
     Scanner sc = new Scanner(System.in);
 
-
     IO.println("Bem-Vindo ao Mundo Genérico de Magia");
     IO.println("Digite seu Nome de Aventureiro:");
     String nomeJogador = sc.nextLine();
-
 
     IO.println("\n" + "Belo Nome!!");
     IO.println("Agora escolha uma classe: ");
@@ -13,12 +11,10 @@ void main() {
     IO.println("(2)Agua /(4)Terra /(*)Mana");
     int escolha = sc.nextInt();
 
-
     Personagem jogador;
     Personagem inimigo = null;
     int dia = 1;
     int pontos = 100;
-
 
     if (escolha == 1) {
         jogador = new ClasseFogo(nomeJogador, 100, 100, Classe.Fogo, 1, 50, 50);
@@ -34,28 +30,21 @@ void main() {
         jogador = new ClasseMana(nomeJogador, 100, 100, Classe.Mana, 1, 50, 50);
     }
 
-
     IO.println("\nBoa Classe!!");
     IO.println("Agora va para sua aventura!!");
 
-
     while (jogador.StatusVivo()) {
-
 
         IO.println("\nDia: " + dia);
         IO.println("Escolha uma opção:");
         IO.println("(1)Caminhar  | (2)Ver Status");
         IO.println("(3)Descansar | (4)Guia de Inimigos");
 
-
         int caminho = sc.nextInt();
-
 
         if (caminho == 1) {
 
-
             int inimigoRamdom = (int) (Math.random() * 7);
-
 
             if (inimigoRamdom == 1) {
                 String inimigonome = "Demonio do Fogo Queimado";
@@ -98,7 +87,6 @@ void main() {
                 inimigo = new ClasseGosma(inimigonome, 10+(int) (Math.random() * 99)*10, 1000, Classe.Gosma, 1, 50, 50);
             }
 
-
             while (jogador.StatusVivo() && inimigo.StatusVivo()) {
                 IO.println("\n--- SEU TURNO ---");
                 IO.println(jogador);
@@ -106,9 +94,7 @@ void main() {
                 IO.println("1 - Atacar / 3 - Recuperar Energia");
                 IO.println("2 - Curar / 4 - Bloquear");
 
-
                 int acao = sc.nextInt();
-
 
                 if (acao == 1) {
                     jogador.atacar(inimigo);
@@ -118,7 +104,6 @@ void main() {
                     if (inimigo.StatusVivo()) {
                         IO.println("\n--- TURNO DO INIMIGO ---");
                         int acaoInimigo = (int) (Math.random() * 3);
-
 
                         if (acaoInimigo == 1) {
                             inimigo.atacar(jogador);
@@ -138,10 +123,8 @@ void main() {
                     jogador.curar(valorcura);
                     IO.println("\nVoce se curou/ +" + valorcura);
 
-
                     IO.println("\n--- TURNO DO INIMIGO ---");
                     int acaoInimigo = (int) (Math.random() * 2);
-
 
                     if (acaoInimigo == 1) {
                         inimigo.atacar(jogador);
@@ -155,16 +138,13 @@ void main() {
                         IO.println(inimigo.getNome() + " está se curando!");
                     }
 
-
                 } else if (acao == 3) {
                     int valorenergia = 15;
                     jogador.recuperarEnergia(valorenergia);
                     IO.println("\nVoce recuperou/ +" + valorenergia + "energia");
 
-
                     IO.println("\n--- TURNO DO INIMIGO ---");
                     int acaoInimigo = (int) (Math.random() * 2);
-
 
                     if (acaoInimigo == 1) {
                         inimigo.atacar(jogador);
@@ -182,14 +162,11 @@ void main() {
                     jogador.ativarBloqueio();
                     pontos += 10;
 
-
                 } else {
                     IO.println("Ação inválida! Você perdeu o turno.");
 
-
                     IO.println("\n--- TURNO DO INIMIGO ---");
                     int acaoInimigo = (int) (Math.random() * 2);
-
 
                     if (acaoInimigo == 1) {
                         inimigo.atacar(jogador);
@@ -209,12 +186,9 @@ void main() {
                     IO.println("Voce Perdeu");
                 }
             }
-
-
         } else if (caminho == 2) {
             IO.println("\n" + jogador);
             IO.println("Pontuação: "+pontos);
-
 
         } else if (caminho == 3) {
             IO.println("\nVoce Descansou um Pouco");
@@ -225,7 +199,7 @@ void main() {
             dia += 1;
         } else if(caminho == 4){
             IO.println("\n");
-            int inimigoRamdom = (int) (Math.random() * 8);
+            int inimigoRamdom = (int) (Math.random() * 9);
 
 
             if (inimigoRamdom == 1) {
@@ -257,7 +231,8 @@ void main() {
                 String inimigonome = "?????";
                 IO.println(inimigonome+": Criatura sem rastros");
                 IO.println("Falam que veio para acabar com o conforto e causar o caos");
-            }else if(inimigoRamdom == 7){
+            }
+            else if(inimigoRamdom == 7){
                 String inimigonome = "Morcego Vampirico";
                 IO.println(inimigonome+": Falam que caso morda Alguem consiguira se tornar um vampiro");
                 IO.println("Ou consegue contrair raiva mesmo");
@@ -273,8 +248,6 @@ void main() {
             dia += 1;
             pontos -= 10;
         }
-
-
     }
     IO.println("\nGAME OVER");
     IO.println("Dias: "+dia);
